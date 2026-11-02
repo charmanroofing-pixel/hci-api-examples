@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "hobbycardindex": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://hobbycardindex.com/api/v1/mcp",
+        "--transport",
+        "http-only",
+        "--header",
+        "X-API-Key:${HCI_API_KEY}"
+      ],
+      "env": {
+        "HCI_API_KEY": "hci_live_..."
+      }
+    }
+  }
+}
