@@ -1,0 +1,17 @@
+{
+  "name": "hobbycardindex-node-examples",
+  "private": true,
+  "type": "module",
+  "description": "Runnable examples for the HobbyCardIndex Data API",
+  "scripts": {
+    "price": "node price-lookup.mjs",
+    "scan": "node scan-a-photo.mjs",
+    "cert": "node cert-lookup.mjs"
+  },
+  "dependencies": {
+    "hobbycardindex": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
