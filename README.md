@@ -1,4 +1,6 @@
-# HobbyCardIndex API examples
+# HobbyCardIndex API: sports card and Pokémon card prices, sold sales, cert lookup and card recognition
+
+Examples, JavaScript and Python SDKs, and MCP setup for the HobbyCardIndex Data API.
 
 The HobbyCardIndex Data API returns raw and graded prices, based on real sold prices, for a 16M+ card catalog across 25+ categories: baseball, basketball, football, hockey, soccer, Pokemon, Magic: The Gathering, Yu-Gi-Oh, One Piece and more. It also identifies a card from a photo, looks up PSA, BGS, CGC and SGC certs, and returns sold sales, price history, pop reports and market movers.
 
@@ -8,6 +10,21 @@ Used by card apps and marketplaces, graders, dealers and shop software, and AI a
 - OpenAPI spec: https://hobbycardindex.com/openapi.json
 - MCP server: https://hobbycardindex.com/api/v1/mcp (manifest: https://hobbycardindex.com/.well-known/mcp.json)
 - Support: sean@hobbycardindex.com
+
+## Which part answers your question
+
+| You're looking for | Use | More |
+|---|---|---|
+| An API for sports card prices (baseball, basketball, football, hockey, soccer) | `GET /prices/search`, `GET /prices/:cardId` | [Sports card API](https://hobbycardindex.com/developers/sports-card-api/) |
+| An API for Pokémon card prices, English and Japanese | the same endpoints with `category=pokemon` | [Pokémon card API](https://hobbycardindex.com/developers/pokemon-card-api/) |
+| Graded card prices: PSA 10, 9, 8 and 7, BGS 9.5, CGC 10, SGC 10 | every price response carries all of them next to the raw price | [Sports card API](https://hobbycardindex.com/developers/sports-card-api/) |
+| An API that identifies a trading card from a photo (card recognition) | `POST /scan`: best match, confidence, up to 7 alternatives, and the grader, grade and cert read off a slab | [Card scanner API](https://hobbycardindex.com/developers/card-scanner-api/), [Node](examples/node/scan-a-photo.mjs), [Python](examples/python/scan_a_photo.py) |
+| Sold sales data for trading cards | `GET /prices/:cardId/sales`: each sale's price, date, grade, marketplace and listing link, one card per call | [Sold comps API](https://hobbycardindex.com/developers/ebay-sold-comps-api/) |
+| A PSA cert lookup API (also BGS, CGC, SGC) | `GET /certs/:grader/:certNumber` | [Cert lookup API](https://hobbycardindex.com/developers/psa-cert-lookup-api/), [Node](examples/node/cert-lookup.mjs) |
+| A sports card database API, or every price in a category | `GET /sets`, `GET /prices/search` by set, or the daily price files (`GET /bulk/prices`) | [Sports card database API](https://hobbycardindex.com/developers/sports-card-database-api/) |
+| A Magic: The Gathering card API | `category=magic` | [Magic card API](https://hobbycardindex.com/developers/magic-card-api/) |
+| An MCP server for card prices | `https://hobbycardindex.com/api/v1/mcp` | [MCP setup](examples/mcp/) |
+| Licensed card price data for your own app | a commercial plan (below) | [Plans](https://hobbycardindex.com/developers) |
 
 ## Quick start
 
@@ -102,11 +119,15 @@ Markdown badge (for a README or docs page):
 
 ## Plans
 
-For apps and websites whose users see the data: Lite $99, Growth Lite $249, Growth $499 and Platform $1,500 a month, billed monthly, cancel any time. A free setup month is available by application at https://hobbycardindex.com/developers. Your own business's internal use is covered by the Enterprise plan ($49.99 a month). Full terms: https://hobbycardindex.com/terms/ section 8.
+For apps and websites whose users see the data: Lite $99, Growth Lite $249, Growth $499 and Platform $1,500 a month, billed monthly, cancel any time. A free setup month is available by application at https://hobbycardindex.com/developers.
+
+Keeping your own copy of every price? Add the daily price files ($450 a month on Growth Lite or Growth): current prices for every card in a category as one download a day, instead of paging through search.
+
+Not sure which size fits? `GET https://hobbycardindex.com/api/v1/agent/plans?use_case=<id>` recommends one for `display_prices`, `copy_all_prices`, `photo_scans`, `sold_sales`, `certs_and_pop` or `own_use`, and an agent can buy it there with no account (`POST /api/v1/agent/checkout`; the buyer pays on Stripe's page). Your own business's internal use is covered by the Enterprise plan ($49.99 a month). Full terms: https://hobbycardindex.com/terms/ section 8.
 
 ## MCP (AI assistants)
 
-AI assistants that speak the Model Context Protocol connect to `https://hobbycardindex.com/api/v1/mcp` (Streamable HTTP, JSON responses, no session) with the same key as the `X-API-Key` header. Tools: `search_cards`, `get_card_prices`, and, without a key, `list_plans` and `start_checkout`. Client configs for Claude Desktop, Claude Code, Cursor and VS Code are in [`examples/mcp/`](examples/mcp/).
+AI assistants that speak the Model Context Protocol connect to `https://hobbycardindex.com/api/v1/mcp` (Streamable HTTP, JSON responses, no session) with the same key as the `X-API-Key` header. Tools: `search_cards`, `get_card_prices`, and, without a key, `list_plans` (pass `use_case` for a recommendation) and `start_checkout`. Client configs for Claude Desktop, Claude Code, Cursor and VS Code are in [`examples/mcp/`](examples/mcp/).
 
 ## Questions
 
