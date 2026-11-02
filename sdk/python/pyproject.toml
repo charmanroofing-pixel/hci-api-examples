@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hobbycardindex"
+version = "0.1.0"
+description = "Client for the HobbyCardIndex Data API: raw and graded card prices, card ID from a photo, cert lookups, sold sales, price history and pop reports across a 16M+ card catalog."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "HobbyCardIndex", email = "sean@hobbycardindex.com" }]
+keywords = [
+  "sports card api",
+  "pokemon card api",
+  "trading card prices",
+  "card scanner api",
+  "psa cert lookup",
+  "mcp",
+  "hobbycardindex",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Internet :: WWW/HTTP",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://hobbycardindex.com/developers"
+Documentation = "https://hobbycardindex.com/developers"
+Repository = "https://github.com/charmanroofing-pixel/hci-api-examples"
+Issues = "https://github.com/charmanroofing-pixel/hci-api-examples/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hobbycardindex = ["py.typed"]
