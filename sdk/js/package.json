@@ -1,0 +1,45 @@
+{
+  "name": "hobbycardindex",
+  "version": "0.1.0",
+  "description": "Client for the HobbyCardIndex Data API: raw and graded card prices, card ID from a photo, cert lookups, sold sales, price history and pop reports across a 16M+ card catalog.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "sports card api",
+    "pokemon card api",
+    "trading card prices",
+    "card scanner api",
+    "psa cert lookup",
+    "mcp",
+    "hobbycardindex"
+  ],
+  "author": "HobbyCardIndex <sean@hobbycardindex.com>",
+  "license": "MIT",
+  "homepage": "https://hobbycardindex.com/developers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charmanroofing-pixel/hci-api-examples"
+  },
+  "bugs": {
+    "url": "https://github.com/charmanroofing-pixel/hci-api-examples/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
